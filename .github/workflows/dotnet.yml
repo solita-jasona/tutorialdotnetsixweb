@@ -42,12 +42,12 @@ jobs:
         path: /home/runner/work/tutorialdotnetsixweb/tutorialdotnetsixweb/website/**
         if-no-files-found: error
         
-  deploy_staging:
+  deploy_prod:
     needs: build
     runs-on: ubuntu-latest
 
     environment:
-      name: PRE-PROD
+      name: PROD
       url: ${{ steps.deploywebapp.outputs.webapp-url }}
 
     steps:
@@ -67,7 +67,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.app-name }}
-        slot-name: staging
         package: website
 
     - name: az cli logout
