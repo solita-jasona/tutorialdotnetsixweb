@@ -31,7 +31,7 @@ jobs:
         ConnectionStrings.DefaultConnection: ${{ secrets.DB_CONNECTION_STRING }}
     - uses: azure/sql-action@v1
       with:
-        server-name: jason-database-new.database.windows.net
+        server-name: "jason-database-new.database.windows.net"
         connection-string: ${{ secrets.DB_CONNECTION_STRING }}
         dacpac-package: './sqldb.dacpac'
     - name: Build
