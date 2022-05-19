@@ -29,6 +29,11 @@ jobs:
         files: 'tutorialdotnetsixweb/appsettings.json'
       env:
         ConnectionStrings.DefaultConnection: ${{ secrets.DB_CONNECTION_STRING }}
+    - uses: azure/sql-action@v1
+      with:
+        server-name: jason-database-new.database.windows.net
+        connection-string: ${{ secrets.DB_CONNECTION_STRING }}
+        dacpac-package: './sqldb.dacpac'
     - name: Build
       run: dotnet build --no-restore
     - name: Test
